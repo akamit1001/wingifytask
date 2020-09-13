@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Task</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+  
+  <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+    Open modal
+  </button> -->
+
+  <!-- The Modal -->
+  <div class="modal" id="myModal" backdrop="false">
+    <div class="modal-dialog modal-lg modal_content">
+      <div class="modal-content">
+      
+        <!-- Modal Header -->
+        
+          
+          <button type="button" class="close" onclick="close_modal()">&times;</button>
+       
+        
+        <!-- Modal body -->
+        <div class="modal-body yellow_bg">
+            <div class="container-fluid p-4 mobile_pad">
+                <div class="row">
+                    <div class="col-md-7">
+                        <form action="" method="POST" name="cookieform">
+                            <h3 class="heading_future1">Get 10% off when you SIGN UP</h3>
+                            <p class="text_signup">saving, news, updates and more</p>
+                            <div class="row input_form">
+                                <div class="col-md-12 mt-2">
+                                    <div class="form-group">
+                                      <input type="text" id="names" class="form-control form_fields" name="name" placeholder="your name">
+                                    </div>
+                                </div>
+                                <div class="col-md-12 mt-2">
+                                    <div class="form-group">
+                                      <input type="email" id="mailid" name="email" class="form-control form_fields" placeholder="your email" required />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group form-check">
+                                <label class="form-check-label">
+                                  <input class="form-check-input" id="checkb"  type="checkbox" name="remember" required /> Check this box to recieve monthly newsletter
+                                </label>
+                              </div>
+                            <div class="row input_form">
+                                <div class="col-md-12 mt-2">
+                                    <div class="form-group m-0">
+                                      <button class="btn btn-default butn_signup" value="Sign Up" type="submit" onclick="setCookie()">Sign Up</button>
+                                    </div>
+                                    <p class="text-center mt-3"><a href="#" class="privacy_policy">Privacy Policy</a></p>
+                                </div>
+                                
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-md-5 small_hide">
+                        <img src="design.jpg" class="img-fluid">
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Modal footer -->
+        
+        
+      </div>
+    </div>
+  </div>
+  
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<script>
+
+  function setCookie() {
+    let userName = document.getElementById('names').value;
+    let userEmail = document.getElementById('mailid').value;
+    let userCheckbox = document.getElementById('checkb').value;
+    
+    cookievalue = escape(document.cookieform.name.value) + ";";
+    document.cookie = "name=" + cookievalue + ';';
+    
+    cookievalue = escape(document.cookieform.email.value) + ";";
+    document.cookie = "email=" + cookievalue + ';';
+    
+    cookievalue = escape(document.cookieform.remember.value) + ";";
+    document.cookie = "checkbox=" + cookievalue + ';';
+    //$('#myModal').modal('hide');
+    
+      }
+  
+      function close_modal() {
+        var allcookiesd = document.cookie;
+        allcookies =   allcookiesd.trim();
+        setCookie();
+        var name = getCookie('name');
+        $('#myModal').modal('hide');
+    
+    }
+    
+     function getCookie(name) {
+     const value = `; ${document.cookie}`;
+     const parts = value.split(`; ${name}=`);
+     if (parts.length === 2) return parts.pop().split(';').shift();
+    }
+
+
+    function addEvent(obj, evt, fn) {
+        if (obj.addEventListener) {
+            obj.addEventListener(evt, fn, false);
+        }
+        else if (obj.attachEvent) {
+            obj.attachEvent("on" + evt, fn);
+        }
+    }
+    
+    // Exit intent trigger
+    addEvent(document, 'mouseout', function(evt) {
+    
+        if (evt.toElement == null && evt.relatedTarget == null ) {
+          var name = getCookie('name');
+          //alert(name); 
+          if(name == undefined) {      
+           // alert(name);      
+            $('#myModal').modal({
+                backdrop: 'static',
+                keyboard: false
+            });
+          }
+        };
+    
+    });
+
+    $(window).on("resize", function (e) {
+      checkScreenSize();
+  });
+
+  checkScreenSize();
+
+  function checkScreenSize(){
+      var newWindowWidth = $(window).width();
+      if (newWindowWidth < 766) {
+        var name = getCookie('name');
+        if(name == undefined) {  
+        setTimeout(function(){ 
+          $('#myModal').modal('show');
+         }, 3000);
+        }
+      }
+     
+  }
+
+
+</script>
+
+</body>
+</html>

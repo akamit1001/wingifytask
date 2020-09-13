@@ -1,0 +1,94 @@
+@font-face {
+    font-family: regular;
+    src: url(fonts/DINRoundPro.otf);
+  }
+  @font-face {
+    font-family: medium;
+    src: url(fonts/DINRoundPro-Medium.otf);
+  }
+  @font-face {
+    font-family: light;
+    src: url(fonts/DINRoundPro-Light.otf);
+  }
+
+body{
+    font-family: regular;
+    background:#4c4c4c;
+}
+.yellow_bg{
+    background: #fdd501;
+    padding:40px 25px 10px;
+}
+#myModal .close{
+    position: absolute;
+    right: 18px;
+    color: #000000;
+    opacity: 1;
+    z-index: 9;
+    box-shadow: none;
+    text-shadow: none;
+    font-size: 45px;
+    font-weight: 400;
+    top: 3px;
+}
+button:focus{
+    outline:none;
+}
+
+.form_fields{
+    border-radius: 0 !important;
+    box-shadow: none;
+    height: 50px;
+    border:0px;
+    font-family: light;
+}
+.heading_future1{
+    text-transform:uppercase;
+    font-family: medium;
+    font-weight:600;
+}
+.text_signup{
+    text-transform:uppercase;
+    font-family: regular;
+    font-size:23px;
+}
+.butn_signup{
+    width: 100%;
+    background: #000000;
+    border-radius: 0;
+    color: #ffffff;
+    height: 50px;
+}
+.butn_signup:hover{
+    color:#ffffff
+}
+.modal_content{
+    max-width:70%;
+}
+.privacy_policy{
+    color:#000000;
+    text-decoration:underline;
+}
+.modal{
+    transition:transform 1s linear;;
+}
+
+.small_hide{
+    display:block !important;
+}
+@media only screen and (max-width: 767px) {
+    .modal_content{
+        max-width: 91%;
+        top:11%;
+        left:2%;
+    }
+    .modal{
+        padding-left:0 !important;
+    }
+    .small_hide{
+        display:none !important;
+    }
+    .mobile_pad{
+        padding:20px 0 !important;
+    }
+}
